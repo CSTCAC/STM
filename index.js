@@ -126,7 +126,6 @@ app.get("/asset_types", (req, res) => {
                 aBText: "Login",
                 aBLink: "/login",
                 aBPic: "",
-                model: req.oidc.user,
                 model: rows
             });
         }
@@ -153,7 +152,6 @@ app.get("/asset_type_threats", (req, res) => {
                 aBText: "Login",
                 aBLink: "/login",
                 aBPic: "",
-                model: req.oidc.user,
                 model: rows
             });
         }

@@ -1,0 +1,156 @@
+* {
+    font-family: "Cambria";
+    font-size: 14px;
+    margin: 0 0 0 0;
+    letter-spacing: 1px;
+    /* outline: 1px solid red; */
+}
+
+
+/* CSS Here for the basic header page positioning of nav bar */
+
+/* The Text/Application Name in the banner */
+.navHeader {
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+/* Navbar generic CSS */
+.navbar {
+    margin: 0;
+    padding: 40px;
+    background: #ccc;
+    box-shadow: 4px 3px 8px 1px #969696;
+    -webkit-box-shadow: 4px 3px 8px 1px #969696;
+    background-image: linear-gradient(to bottom right, #616161, #434343);
+}
+
+/* Navbar generic CSS */
+.nav-link{
+    font-size: 24px;
+}
+
+
+
+body {
+    background-color: #F8F8F6;
+}
+
+/* CSS Here for the bootstrap icon  alignment   */
+.bi {
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+
+/* CSS Here for the connections input and edit views etc */
+
+.form-card input,
+select,
+.form-card textarea {
+    padding: 10px 15px 5px 15px;
+    border: 1px solid lightgrey;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    width: 100%;
+    overflow: visible;
+}
+
+.input-group input,
+select {
+    position: relative;
+    height: 90px;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding-top: 30px;
+    padding-left: 25px;
+    word-wrap: normal;
+}
+
+.input-group label {
+    position: absolute;
+    height: 24px;
+    background: none;
+    line-height: 48px;
+    color: gray;
+    width: 100%;
+    padding-left: 25px;
+}
+
+.parent {
+    position: relative;
+    padding: 20px 20px 20px 20px;
+    height: 100%;
+}
+
+.child {
+    position: relative;
+    padding: 05px 25px 25px 25px;
+    overflow: auto;
+    height: 100%;
+    box-shadow: 4px 3px 8px 1px #969696;
+    -webkit-box-shadow: 4px 3px 8px 1px #969696;
+}
+
+.baby {
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    overflow: auto;
+}
+
+table {
+    font-family: arial, sans-serif;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+thead {
+    background-color: #ff7858;
+}
+
+td,
+th {
+    border: 1px solid lightgrey;
+    text-align: center;
+    padding: 0 0 0 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.btn {
+    width: 100%;
+    border-radius: 0;
+}
+
+#btn50 {
+    width: 200px;
+    display: inline-block;
+    border-radius: 0;
+}
+
+.btn50 {
+    width: 200px;
+    display: inline-block;
+    border-radius: 0;
+}
+
+#hlBtn {
+    text-decoration: none;
+    position: absolute;
+    transform: translate(20px, -35px);
+    color: darkgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#myImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}

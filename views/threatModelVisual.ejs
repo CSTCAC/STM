@@ -1,0 +1,28 @@
+<%- include("_header") -%>
+
+<div class="parent">
+    <div class="child">
+        <div class="baby">
+            <h3 class="text-center">Visualisation of Threat Model</h3>
+            <input id="navCancel" style="margin-bottom: 5px;" class="btn btn-danger btn50" value="Back to Connections" onclick="window.location.href = '/conn';"/>
+            <div class="mermaid" style="text-align: center;">
+                graph TD
+                <% for (const con of model) { %>
+
+                    <%= con.CONN_FROM %>--->|<%= con.CONN_PROTOCOL %>| <%= con.CONN_TO %>
+
+                <% } %>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+            <!--https://mermaid-js.github.io/mermaid/#/flowchart ---see subgraph -->
+        </div>
+    </div>
+</div>
+
+<script nonce="ZWgxGcitiVitzmVZOAI2eg==">mermaid.initialize({startOnLoad: true});</script>
+<script nonce='H0iYXHHgq49xrOQQjSLkIw=='>
+    document.getElementById("navCancel").addEventListener("click", function() {
+        window.location.href = '/conn';
+    });
+</script>
+<%- include("_footer") -%>

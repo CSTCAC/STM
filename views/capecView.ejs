@@ -1,0 +1,37 @@
+<%- include("_header") -%>
+
+<div class="parent">
+    <div class="child">
+        <div class="baby">
+            <div class="form-card">
+            <h3 class="text-center">Threat Detail</h3>
+
+                <table>
+                    <thead><th>Capec Field</th><th>Capec Detail</th></thead>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Name</th><td style="text-align: left;padding: 10px;"><%= model.Name %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Description</th><td style="text-align: left;padding: 10px;"><%= model.Description %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Alternate_Terms</th><td style="text-align: left;padding: 10px;"><%= model.Alternate_Terms %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Likelihood_Of_Attack</th><td style="text-align: left;padding: 10px;"><%= model.Likelihood_Of_Attack %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Typical_Severity</th><td style="text-align: left;padding: 10px;"><%= model.Typical_Severity %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Prerequisites</th><td style="text-align: left;padding: 10px;"><%= model.Prerequisites %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Skills_Required</th><td style="text-align: left;padding: 10px;"><%= model.Skills_Required %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Resources_Required</th><td style="text-align: left;padding: 10px;"><%= model.Resources_Required %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Execution Flow</th><td style="text-align: left;padding: 10px;"><%= model.Execution_Flow %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Indicators</th><td style="text-align: left;padding: 10px;"><%= model.Indicators %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Consequences</th><td style="text-align: left;padding: 10px;"><%= model.Consequences %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Mitigations</th><td style="text-align: left;padding: 10px;"><%= model.Mitigations %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Example Instances</th><td style="text-align: left;padding: 10px;"><%= model.Example_Instances %></td></tr>
+                    <tr><th style="text-align: right;padding: 10px;width: 20%;  background-color: #ff7858;">Taxonomy Mappings</th><td style="text-align: left;padding: 10px;"><%= model.Taxonomy_Mappings %></td></tr>
+               </table>
+                <input type="cancel" id="navCancel" style="margin-bottom: 5px;" class="btn btn-danger btn50" value="Back to Threat Model"/>
+        </div>
+    </div>
+</div>
+</div>
+<script nonce='H0iYXHHgq49xrOQQjSLkIw=='>
+    document.getElementById("navCancel").addEventListener("click", function() {
+        window.location.href = '/threatModel';
+    });
+</script>
+
+<%- include("_footer") -%>

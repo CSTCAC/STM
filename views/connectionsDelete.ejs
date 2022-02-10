@@ -1,0 +1,22 @@
+<%- include("_header") -%>
+
+<div class="parent">
+    <div class="child">
+        <div class="baby">
+            <form action="/deleteConn/<%= model.CONN_ID %>" method="post">
+                <div class="form-card">
+                    <h3 class="text-center" style="color: #0c4128">Delete Connection?</h3>
+                    <input type="submit" value="Confirm" class="btn btn-success btn50"/>
+                    <input id="navCancel" class="btn btn-danger btn50" value="Cancel"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script nonce='H0iYXHHgq49xrOQQjSLkIw=='>
+    document.getElementById("navCancel").addEventListener("click", function() {
+        window.location.href = '/conn';
+    });
+</script>
+<%- include("_footer") -%>

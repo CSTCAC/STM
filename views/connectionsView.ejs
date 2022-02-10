@@ -1,0 +1,77 @@
+<%- include("_header") -%>
+
+
+<div class="parent">
+    <div class="child">
+        <div class="baby">
+            <h3 class="text-center">Threat Model Connections</h3>
+
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Connection ID</th>
+                    <th>Asset Connecting From</th>
+                    <th>Asset Type</th>
+                    <th>Zone</th>
+                    <th>Asset Connecting To</th>
+                    <th>Asset Type</th>
+                    <th>Zone</th>
+                    <th>Protocol</th>
+                    <th>Notes</th>
+                    <th>Action</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <% for (const cn of model) { %>
+                    <tr>
+                        <td><%= cn.CONN_ID %></td>
+                        <td><%= cn.CONN_FROM %> <a href="/createConnFromF/<%= cn.CONN_ID %>" id="hlBtn"
+                                                   title="Create New Link from this Asset">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-plus-fill" viewBox="0 0 16 16">
+                                    <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
+                                </svg>
+                            </a></td>
+                        <td><%= cn.CONN_FROM_ASSET_TYPE %></td>
+                        <td><%= cn.CONN_FROM_ZONE %></td>
+                        <td><%= cn.CONN_TO %><a href="/createConnFromT/<%= cn.CONN_ID %>" id="hlBtn"
+                                                title="Create New Link from this Asset">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-plus-fill" viewBox="0 0 16 16">
+                                    <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
+                                </svg>
+                            </a></td>
+
+                        <td><%= cn.CONN_TO_ASSET_TYPE %></td>
+                        <td><%= cn.CONN_TO_ZONE %></td>
+                        <td><%= cn.CONN_PROTOCOL %></td>
+                        <td><%= cn.Notes %></td>
+                        <td><a class="btn btn-warning" href="/editConn/<%= cn.CONN_ID %>"
+                               style="text-decoration: none; width: 70px">Edit</a><a class="btn btn-danger"
+                                                                                     href="/deleteConn/<%= cn.CONN_ID %>"
+                                                                                     style="text-decoration: none; width: 70px">Delete</a></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+            <input id="navNewConn" class="btn btn-success btn50" value="Create New Connection"/>
+            <input id="navViewTM" class="btn btn-warning btn50" value="View Threat Model"/>
+            <input id="navViewTG" class="btn btn-info btn50" value="Visual Threat Model"/>
+        </div>
+    </div>
+</div>
+
+<script nonce='8SDG4J06kBfDU6JO0DS/nQ=='>
+    document.getElementById("navNewConn").addEventListener("click", function() {
+        window.location.href = '/createConn';
+    });
+    document.getElementById("navViewTM").addEventListener("click", function() {
+        window.location.href = '/threatmodel';
+    });
+    document.getElementById("navViewTG").addEventListener("click", function() {
+        window.location.href = '/threatGraph';
+    });
+</script>
+
+<%- include("_footer") -%>

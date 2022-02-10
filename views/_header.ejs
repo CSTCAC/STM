@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Simple Threat Modeller</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          id="bootstrap-css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/custom.css">
+</head>
+
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark  sticky-top" id="navSub">
+
+        <a class="navbar-brand navHeader" href="/">
+            <svg style="transform: translateY(-9px);" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 fill="currentColor" class="bi bi-stack" viewBox="0 0 16 16">
+                <path d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
+                <path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
+            </svg>
+            Simple Threat Modeller </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain" >
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        <svg style="transform: translateY(-9px);" xmlns="http://www.w3.org/2000/svg" width="20"
+                             height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd"
+                                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                        Home</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/asset_types">
+                        <svg style="transform: translateY(-9px);" xmlns="http://www.w3.org/2000/svg" width="20"
+                             height="20" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                            <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+                        </svg>
+                        Asset Types</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/asset_type_threats">
+                        <svg style="transform: translateY(-9px);" xmlns="http://www.w3.org/2000/svg" width="20"
+                             height="20" fill="currentColor" class="bi bi-grid-1x2-fill" viewBox="0 0 16 16">
+                            <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z"/>
+                        </svg>
+                        Asset Threats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/conn">
+                        <svg style="transform: translateY(-9px);" xmlns="http://www.w3.org/2000/svg" width="20"
+                             height="20" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+                            <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        Threat Modelling</a>
+                </li>
+
+            </ul>
+        </div>
+
+    <div class="collapse navbar-collapse" id="navbarMain" >
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item" id="userActions">
+
+                <script nonce="GwA54yjx/CUbyVkmfAzhrQ==">
+                    if("<%= aBText %>"=="Login"){
+                        <!--logged out -->
+                        document.write('<a class="nav-link" href=<%= aBLink %>><button type="button" class="btn btn-outline-success logbtn"><%= aBText %></button></a>');
+                    } else {
+                        <!--logged in -->
+                        document.getElementById("userActions").innerHTML ='<a class="nav-link" href=<%= aBLink %>><button type="button" class="btn btn-outline-danger logbtn"><%= aBText %></button></a>';
+                    }
+                </script>
+            </li>
+            <li class="nav-item" id="userImg">
+                <script nonce="j9/wVLIhsF299f3WcoMBHg==">
+                    if("<%= aBText %>"=="Logout"){
+                        <!-- logged in -->
+                        document.getElementById("userImg").innerHTML ='<a class="nav-link" href="/profile"><img id="myImg" src=<%= aBPic %>></a>';
+                    }
+                </script>
+
+            </li>
+
+
+
+        </ul>
+    </div>
+</nav>
+
+
+<div class="content">

@@ -1,0 +1,93 @@
+<%- include("_header") -%>
+
+
+<div class="parent">
+    <div class="child">
+        <div class="baby">
+            <div class="form-card">
+                <h3 class="text-center" >Create Connection</h3>
+                <form action="/createConn" method="post">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group"><input type="text" name="CONN_FROM" placeholder="component name" required>
+                                <label>Connection From</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group"><select name="CONN_FROM_ASSET_TYPE">
+                                    <% for (const ast of model) { %>
+                                        <option><%= ast.AT_NAME %></option>
+                                    <% } %>
+                                </select><label>Asset Type</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group"><input type="text" name="CONN_FROM_ZONE" placeholder="network zone name">
+                                <label>Network Zone</label></div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group"><input type="text" name="CONN_TO" placeholder="component name" required>
+                                <label>Connection To</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+
+                            <div class="input-group"><select name="CONN_TO_ASSET_TYPE" >
+                                    <% for (const ast of model) { %>
+                                        <option><%= ast.AT_NAME %></option>
+                                    <% } %>
+                                </select><label>Asset Type</label>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group"><input type="text" name="CONN_TO_ZONE" placeholder="network zone name">
+                                <label>Network Zone</label></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group"><input type="text" name="CONN_PROTOCOL" placeholder="protocol used" required>
+                                <label>Protocol Used</label></div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group"><input type="text" name="Notes" placeholder="notes">
+                                <label>Notes</label></div>
+                        </div>
+                    </div>
+
+
+                            <input type="submit" value="Create" class="btn btn-success btn50"/>
+                            <input id="navCancel" class="btn btn-danger btn50" value="Cancel"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script nonce='H0iYXHHgq49xrOQQjSLkIw=='>
+    document.getElementById("navCancel").addEventListener("click", function() {
+        window.location.href = '/conn';
+    });
+</script>
+<%- include("_footer") -%>

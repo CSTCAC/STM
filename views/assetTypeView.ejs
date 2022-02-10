@@ -1,0 +1,34 @@
+<%- include("_header") -%>
+
+<div class="parent">
+    <div class="child">
+        <div class="baby">
+        <h3 class="text-center"><h3 class="text-center">List of Asset Types (<%= model.length %>)</h3></h3>
+
+        <table class=>
+            <thead>
+            <tr>
+                <th style="width: 20%;">Asset Type</th>
+                <th>Comments</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <% for (const at of model) { %>
+                <tr>
+                    <td style="text-align: right;padding: 10px;"><%= at.AT_NAME %></td>
+                    <td style="text-align: left;padding: 10px;" ><%= at.Comments %></td>
+                </tr>
+
+            <% } %>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+</div>
+
+<%- include("_footer") -%>

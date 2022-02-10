@@ -1,0 +1,48 @@
+<%- include("_header") -%>
+
+
+<div class="parent">
+    <div class="child">
+        <div class="baby">
+            <h3 class="text-center">Threat Model - Identified <%= model.length %> Potential Threats</h3>
+            <input id="navCancel" style="margin-bottom: 5px;" class="btn btn-danger btn50"
+                   value="Back to Connections"
+                   onclick="window.location.href = '/conn';"/>
+            <table id="myTable">
+                <thead id="myTableHead">
+                <tr>
+                    <th style="width:2%;">Asset</th>
+                    <th style="width:2%;">Asset Type</th>
+                    <th style="width:2%;">Threat</th>
+                    <th style="width:30%;">Description</th>
+                    <th style="width:2%;">Likelihood_Of_Attack</th>
+                    <th style="width:2%;">Typical_Severity</th>
+                    <th style="width:30%;">Mitigations</th>
+                </tr>
+                </thead>
+
+                <tbody id="myTableBody">
+                <% for (const cn of model) { %>
+                    <tr>
+                        <td><%= cn.Asset %></td>
+                        <td><%= cn.Asset_Type %></td>
+                        <td><a href="/capecDisplay/<%= cn.AT_Threat %>"><%= cn.AT_Threat %></a></td>
+                        <td style="font-size: 12px;"><%= cn.Description %></td>
+
+                        <td><%= cn.Likelihood_Of_Attack %></td>
+                        <td><%= cn.Typical_Severity %></td>
+                        <td style="font-size: 12px;"><%= cn.NewMit %></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script nonce='H0iYXHHgq49xrOQQjSLkIw=='>
+    document.getElementById("navCancel").addEventListener("click", function() {
+        window.location.href = '/conn';
+    });
+</script>
+
+<%- include("_footer") -%>

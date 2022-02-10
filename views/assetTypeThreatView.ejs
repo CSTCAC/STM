@@ -1,0 +1,39 @@
+<%- include("_header") -%>
+
+
+<div class="parent">
+    <div class="child">
+        <div class="baby">
+                    <h3 class="text-center"><h3 class="text-center">List of Threat Mappings (<%= model.length %>)</h3>
+                    </h3>
+                    <div class="row">
+                        <div class="col-12">
+                            <table id="myTable">
+                                <thead id="myTableHead">
+                                <tr>
+                                    <th style="width: 20%;">Asset Type</th>
+                                    <th>Threats</th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="myTableBody">
+
+                                <% for (const att of model) { %>
+                                    <tr>
+                                        <td style="text-align: right;padding: 10px;"><%= att.AT_NAME %></td>
+                                        <td style="text-align: left;padding: 10px;"><%= att.AT_Threat %></td>
+                                    </tr>
+                                <% } %>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+
+<%- include("_footer") -%>

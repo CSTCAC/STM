@@ -180,7 +180,6 @@ app.get("/conn", requiresAuth(), (req, res) => {
                 aBText: "Login",
                 aBLink: "/login",
                 aBPic: "",
-                model: req.oidc.user,
                 model: rows
             });
         }
@@ -1055,7 +1054,7 @@ db.serialize(function () {
 
 // ----------------------------------------- 404 and 500 error handling -----------------------------------------
 // Handle 404 error messages
-app.use(function (req, res, next) {
+app.use(function (req, res) {
     if (req.oidc.isAuthenticated() == true) {
         res.render("error400", {
             aBText: "Logout",
@@ -1072,7 +1071,7 @@ app.use(function (req, res, next) {
 })
 
 //Handle error 500 messages
-app.use(function (error, req, res, next) {
+app.use(function (error, req, res) {
     res.send("Something went wrong with this request");
 });
 // ----------------------------------------- --------------------------------------------------------------------

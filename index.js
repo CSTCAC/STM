@@ -65,13 +65,12 @@ app.use(express.urlencoded({extended: false})); // <--- middleware configuration
 
 app.use(function (req, res, next) {
     res.set(securityHeaders);
-    res.removeHeader("X-Powered-by")
+    res.removeHeader("X-Powered-by");
     res.status(200);
     next();
 });
 
-app.disable('x-powered-by');
-
+app.disable("x-powered-by");
 
 // SetDB
 var db = new sqlite3.Database(":memory:");

@@ -4,8 +4,8 @@ const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const csv = require("csv-parser");
 const fs = require("fs");
-require('dotenv').config();
-const {auth, requiresAuth} = require('express-openid-connect');
+require("dotenv").config();
+const {auth, requiresAuth} = require("express-openid-connect");
 
 //-------------------- Configurations ----------------------
 const securityHeaders = {
@@ -84,15 +84,15 @@ app.listen(80, () => {
 //-------------------- Routing ----------------------
 // GET / -- this is the home page button
 app.get("/", (req, res) => {
-    if (req.oidc.isAuthenticated() == true) {
+    if (req.oidc.isAuthenticated() === true) {
         res.render("index", {aBText: "Logout", aBLink: "/logout", aBPic: req.oidc.user.picture});
     } else {
         res.render("index", {aBText: "Login", aBLink: "/login", aBPic: ""});
     }
 });
 
-app.get('/profile', requiresAuth(), (req, res) => {
-    if (req.oidc.isAuthenticated() == true) {
+app.get("/profile", requiresAuth(), (req, res) => {
+    if (req.oidc.isAuthenticated() === true) {
         res.render("profile", {
             aBText: "Logout",
             aBLink: "/logout",
@@ -102,9 +102,6 @@ app.get('/profile', requiresAuth(), (req, res) => {
     } else {
         res.render("profile", {aBText: "Login", aBLink: "/login", aBPic: "", model: req.oidc.user});
     }
-    //Nonce generator for scripts - can be deleted
-    const crypto = require('crypto');
-    console.log(crypto.randomBytes(16).toString('base64'));
 });
 
 
@@ -114,7 +111,7 @@ app.get("/asset_types", (req, res) => {
         if (err) {
             return console.error(err.message);
         }
-        if (req.oidc.isAuthenticated() == true) {
+        if (req.oidc.isAuthenticated() === true) {
             res.render("assetTypeView", {
                 aBText: "Logout",
                 aBLink: "/logout",
@@ -140,7 +137,7 @@ app.get("/asset_type_threats", (req, res) => {
             return console.error(err.message);
         }
 
-        if (req.oidc.isAuthenticated() == true) {
+        if (req.oidc.isAuthenticated() === true) {
             res.render("assetTypeThreatView", {
                 aBText: "Logout",
                 aBLink: "/logout",
@@ -168,7 +165,7 @@ app.get("/conn", requiresAuth(), (req, res) => {
             return console.error(err.message);
         }
 
-        if (req.oidc.isAuthenticated() == true) {
+        if (req.oidc.isAuthenticated() === true) {
             res.render("connectionsView", {
                 aBText: "Logout",
                 aBLink: "/logout",
@@ -194,7 +191,7 @@ app.get("/createConn", requiresAuth(), (req, res) => {
             return console.error(err.message);
         }
 
-        if (req.oidc.isAuthenticated() == true) {
+        if (req.oidc.isAuthenticated() === true) {
             res.render("connectionsCreate", {
                 aBText: "Logout",
                 aBLink: "/logout",
@@ -226,7 +223,7 @@ app.get("/createConnFromT/:id", requiresAuth(), (req, res) => {
         obj.d2 = row;
         db.get(sql1, id, (err, row) => {
             obj.d1 = row;
-            if (req.oidc.isAuthenticated() == true) {
+            if (req.oidc.isAuthenticated() === true) {
                 res.render("connectionsCreateFromT", {
                     aBText: "Logout",
                     aBLink: "/logout",
@@ -258,7 +255,7 @@ app.get("/createConnFromF/:id", requiresAuth(), (req, res) => {
         db.get(sql1, id, (err, row) => {
             obj.d1 = row;
 
-            if (req.oidc.isAuthenticated() == true) {
+            if (req.oidc.isAuthenticated() === true) {
                 res.render("connectionsCreateFromF", {
                     aBText: "Logout",
                     aBLink: "/logout",
@@ -305,7 +302,7 @@ app.get("/editConn/:id", requiresAuth(), (req, res) => {
         db.get(sql1, id, (err, row) => {
             obj.d1 = row;
 
-            if (req.oidc.isAuthenticated() == true) {
+            if (req.oidc.isAuthenticated() === true) {
                 res.render("connectionsEdit", {
                     aBText: "Logout",
                     aBLink: "/logout",
@@ -346,7 +343,7 @@ app.get("/threatGraph", requiresAuth(), (req, res) => {
             return console.error(err.message);
         }
 
-        if (req.oidc.isAuthenticated() == true) {
+        if (req.oidc.isAuthenticated() === true) {
             res.render("threatModelVisual", {
                 aBText: "Logout",
                 aBLink: "/logout",
@@ -374,7 +371,7 @@ app.get("/deleteConn/:id", requiresAuth(), (req, res) => {
             return console.error(err.message);
         }
 
-        if (req.oidc.isAuthenticated() == true) {
+        if (req.oidc.isAuthenticated() === true) {
             res.render("connectionsDelete", {
                 aBText: "Logout",
                 aBLink: "/logout",
@@ -418,7 +415,7 @@ app.get("/threatmodel", requiresAuth(), (req, res) => {
             return console.error(err.message);
         }
 
-        if (req.oidc.isAuthenticated() == true) {
+        if (req.oidc.isAuthenticated() === true) {
             res.render("threatModelView", {
                 aBText: "Logout",
                 aBLink: "/logout",
@@ -444,7 +441,7 @@ app.get("/capecDisplay/:name", requiresAuth(), (req, res) => {
             return console.error(err.message);
         }
 
-        if (req.oidc.isAuthenticated() == true) {
+        if (req.oidc.isAuthenticated() === true) {
             res.render("capecView", {
                 aBText: "Logout",
                 aBLink: "/logout",
@@ -1055,7 +1052,7 @@ db.serialize(function () {
 // ----------------------------------------- 404 and 500 error handling -----------------------------------------
 // Handle 404 error messages
 app.use(function (req, res) {
-    if (req.oidc.isAuthenticated() == true) {
+    if (req.oidc.isAuthenticated() === true) {
         res.render("error400", {
             aBText: "Logout",
             aBLink: "/logout",
@@ -1068,7 +1065,7 @@ app.use(function (req, res) {
             aBPic: "",
         });
     }
-})
+});
 
 //Handle error 500 messages
 app.use(function (error, req, res) {

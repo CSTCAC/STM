@@ -31,7 +31,7 @@
 }
 
 body {
-    background-color: #F8F8F6;
+    background-color: #f8f8f6;
 }
 
 /* CSS Here for the bootstrap icon  alignment   */
@@ -114,7 +114,7 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #ddd;
 }
 
 .btn {

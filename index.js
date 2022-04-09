@@ -75,7 +75,7 @@ app.disable("x-powered-by");
 // SetDB
 var db = new sqlite3.Database(":memory:");
 // Starting the server
-app.listen(80, () => {
+app.listen(8009, () => {
     console.log("Server started (http://localhost:80/) !");
 });
 

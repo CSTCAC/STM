@@ -1,0 +1,8 @@
+{
+  "app": {
+    "SECRET":"MsnSVA-P6ZeFQJos2IsRpkL_Purr4oPIKxyHzAMzU8a99Pi770QVwhGohhsLMqGm",
+    "BASE_URL": "http://192.168.3.2",
+    "CLIENT_ID": "5glemtQAH30w3ZqrauOCS0gfHqtCcoIX",
+    "ISSUER_BASE_URL": "https://dev-7jhkb3ld.eu.auth0.com"
+  }
+}

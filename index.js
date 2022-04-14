@@ -1,10 +1,10 @@
 //-------------------- Declarations ----------------------
 const express = require("express");
+const config = require("config");
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const csv = require("csv-parser");
 const fs = require("fs");
-require("dotenv").config();
 const {auth, requiresAuth} = require("express-openid-connect");
 
 //-------------------- Configurations ----------------------
@@ -42,20 +42,20 @@ const securityHeaders = {
     //"Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload" -- Disabled until hosted with cert
 };
 
-const config = {
+const configA0 = {
     authRequired: false,
     auth0Logout: true,
-    secret: process.env.SECRET,
-    baseURL: process.env.BASE_URL,
-    clientID: process.env.CLIENT_ID,
-    issuerBaseURL: process.env.ISSUER_BASE_URL
+    secret: config.get('app.SECRET'),
+    baseURL: config.get('app.BASE_URL'),
+    clientID: config.get('app.CLIENT_ID'),
+    issuerBaseURL: config.get('app.ISSUER_BASE_URL')
 };
 
 
 //-------------------- Start ----------------------
 const app = express();
-// Use Auth0 Config - pulls from .env
-app.use(auth(config));
+// Use Auth0 Config -
+app.use(auth(configA0));
 
 // Server configuration
 app.set("view engine", "ejs");
@@ -73,7 +73,7 @@ app.use(function (req, res, next) {
 app.disable("x-powered-by");
 
 // SetDB
-var db = new sqlite3.Database(":memory:");
+const db = new sqlite3.Database(":memory:");
 // Starting the server
 app.listen(8009, () => {
     console.log("Server started (http://localhost:80/) !");

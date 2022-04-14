@@ -1,22 +1,26 @@
 {
   "name": "threat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "stop": "node index.js"
+    "stop": "node index.js",
+    "start:dev": "cross-env NODE_ENV=development node index.js",
+    "start:prod": "cross-env NODE_ENV=production node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.3.7",
+    "cross-env": "^7.0.3",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.0.0",
-    "ejs": "^3.1.6",
+    "ejs": "^3.0.2",
     "express": "^4.17.2",
     "express-openid-connect": "github:auth0/express-openid-connect",
-    "sqlite3": "^4.2.0"
+    "sqlite3": "^5.0.2"
   }
 }

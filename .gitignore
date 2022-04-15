@@ -105,3 +105,6 @@ dist
 
 # Environments file
 .env
+
+#Idea Files
+.idea/

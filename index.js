@@ -75,7 +75,7 @@ app.disable("x-powered-by");
 // SetDB
 const db = new sqlite3.Database(":memory:");
 // Starting the server
-app.listen(8009, () => {
+app.listen(80, () => {
     console.log("Server started (http://localhost:80/) !");
 });
 
@@ -1000,38 +1000,38 @@ db.serialize(function () {
         fs.createReadStream("./data/1000.csv")
             .pipe(csv({"separator": ","}))
             .on("data", (row) => {
-                let c1 = row["ID"];
-                let c2 = row["Name"];
-                let c3 = row["Abstraction"];
-                let c4 = row["Status"];
-                let c5 = row["Description"];
-                let c6 = row["Alternate Terms"];
-                let c7 = row["Likelihood Of Attack"];
-                let c8 = row["Typical Severity"];
-                let c9 = row["Related Attack Patterns"];
-                let c10 = row["Execution Flow"];
-                let c11 = row["Prerequisites"];
-                let c12 = row["Skills Required"];
-                let c13 = row["Resources Required"];
-                let c14 = row["Indicators"];
-                let c15 = row["Consequences"];
-                let c16 = row["Mitigations"];
-                let c17 = row["Example Instances"];
-                let c18 = row["Related Weaknesses"];
-                let c19 = row["Taxonomy Mappings"];
-                let c20 = row["Notes"];
+                const c1 = row["ID"];
+                const c2 = row["Name"];
+                const c3 = row["Abstraction"];
+                const c4 = row["Status"];
+                const c5 = row["Description"];
+                const c6 = row["Alternate Terms"];
+                const c7 = row["Likelihood Of Attack"];
+                const c8 = row["Typical Severity"];
+                const c9 = row["Related Attack Patterns"];
+                const c10 = row["Execution Flow"];
+                const c11 = row["Prerequisites"];
+                const c12 = row["Skills Required"];
+                const c13 = row["Resources Required"];
+                const c14 = row["Indicators"];
+                const c15 = row["Consequences"];
+                const c16 = row["Mitigations"];
+                const c17 = row["Example Instances"];
+                const c18 = row["Related Weaknesses"];
+                const c19 = row["Taxonomy Mappings"];
+                const c20 = row["Notes"];
 
-                let c6a = "--" + c6.substring(2, c6.length - 2).replaceAll("::", "\n--");
-                let c10a = "--" + c10.substring(2, c10.length - 2).replaceAll("::", "\n--");
-                let c11a = "--" + c11.substring(2, c11.length - 2).replaceAll("::", "\n--");
-                let c12a = "--" + c12.substring(2, c12.length - 2).replaceAll("::", "\n--");
-                let c13a = "--" + c13.substring(2, c13.length - 2).replaceAll("::", "\n--");
-                let c14a = "--" + c14.substring(2, c14.length - 2).replaceAll("::", "\n--");
-                let c15a = "--" + c15.substring(2, c15.length - 2).replaceAll("::", "\n--");
-                let c16a = "--" + c16.substring(2, c16.length - 2).replaceAll("::", "\n--");
-                let c17a = "--" + c17.substring(2, c17.length - 2).replaceAll("::", "\n--");
-                let c19a = "--" + c19.substring(2, c19.length - 2).replaceAll("::", "\n--");
-                let c20a = "--" + c20.substring(2, c20.length - 2).replaceAll("::", "\n--");
+                const c6a = "--" + c6.substring(2, c6.length - 2).replaceAll("::", "\n--");
+                const c10a = "--" + c10.substring(2, c10.length - 2).replaceAll("::", "\n--");
+                const c11a = "--" + c11.substring(2, c11.length - 2).replaceAll("::", "\n--");
+                const c12a = "--" + c12.substring(2, c12.length - 2).replaceAll("::", "\n--");
+                const c13a = "--" + c13.substring(2, c13.length - 2).replaceAll("::", "\n--");
+                const c14a = "--" + c14.substring(2, c14.length - 2).replaceAll("::", "\n--");
+                const c15a = "--" + c15.substring(2, c15.length - 2).replaceAll("::", "\n--");
+                const c16a = "--" + c16.substring(2, c16.length - 2).replaceAll("::", "\n--");
+                const c17a = "--" + c17.substring(2, c17.length - 2).replaceAll("::", "\n--");
+                const c19a = "--" + c19.substring(2, c19.length - 2).replaceAll("::", "\n--");
+                const c20a = "--" + c20.substring(2, c20.length - 2).replaceAll("::", "\n--");
 
                 sql_insert_capec.run(c1, c2, c3, c4, c5, c6a, c7, c8, c9, c10a, c11a, c12a, c13a, c14a, c15a, c16a, c17a, c18, c19a, c20a);
                 //console.log(row);

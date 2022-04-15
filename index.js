@@ -14,28 +14,24 @@ const securityHeaders = {
     "X-Frame-Options": "SAMEORIGIN",
     "X-Powered-by": "",
     "charset": "utf-8",
-
-
-    "X-XSS-Protection": "1; mode=block",
+    "Content-Security-Policy": "script-src 'self' 'nonce-GwA54yjx/CUbyVkmfAzhrQ==' 'nonce-j9/wVLIhsF299f3WcoMBHg==' 'nonce-8SDG4J06kBfDU6JO0DS/nQ==' 'nonce-H0iYXHHgq49xrOQQjSLkIw==' 'nonce-ZWgxGcitiVitzmVZOAI2eg==' https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js;" +
+        "frame-ancestors 'self'; block-all-mixed-content;" +
+        "default-src 'self';" +
+        "style-src 'self' 'report-sample' 'unsafe-inline'  cdn.jsdelivr.net secure.gravatar.com;" +
+        "object-src 'none';" +
+        "frame-src 'self' widgets.wp.com;" +
+        "child-src 'self';" +
+        "img-src 'self' https://*.wp.com https://s.gravatar.com https://*.googleusercontent.com;" +
+        "font-src 'self' data: cdn.jsdelivr.net;" +
+        "connect-src 'self' *.gravatar.com cdn.jsdelivr.net https://*.googleusercontent.com;" +
+        "manifest-src 'self';" +
+        "base-uri 'self';" +
+        "form-action 'self';" +
+        "media-src 'self';" +
+        "prefetch-src 'self';" +
+        "worker-src 'self';",
     "Feature-Policy": "autoplay 'none'; camera 'none'",
-   "Content-Security-Policy": "script-src 'self' 'nonce-GwA54yjx/CUbyVkmfAzhrQ==' 'nonce-j9/wVLIhsF299f3WcoMBHg==' 'nonce-8SDG4J06kBfDU6JO0DS/nQ==' 'nonce-H0iYXHHgq49xrOQQjSLkIw==' 'nonce-ZWgxGcitiVitzmVZOAI2eg==' https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js;" +
-        "frame-ancestors 'self'; block-all-mixed-content;"+
-        "default-src 'self';"+
-        "style-src 'self' 'report-sample' 'unsafe-inline'  cdn.jsdelivr.net secure.gravatar.com;"+
-        "object-src 'none';"+
-        "frame-src 'self' widgets.wp.com;"+
-        "child-src 'self';"+
-        "img-src 'self' https://*.wp.com https://s.gravatar.com https://*.googleusercontent.com;"+
-        "font-src 'self' data: cdn.jsdelivr.net;"+
-        "connect-src 'self' *.gravatar.com cdn.jsdelivr.net https://*.googleusercontent.com;"+
-        "manifest-src 'self';"+
-        "base-uri 'self';"+
-        "form-action 'self';"+
-        "media-src 'self';"+
-        "prefetch-src 'self';"+
-        "worker-src 'self';"
-
-
+    "X-XSS-Protection": "1; mode=block",
 
     //"Expect-CT": "max-age=604800, enforce, report-uri="https://www.example.com/report" -- Disabled until hosted with cert
     //"Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload" -- Disabled until hosted with cert
@@ -65,7 +61,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({extended: false}));
 
 app.use(function (req, res, next) {
-    const httpOK = 200
+    const httpOK = 200;
     res.set(securityHeaders);
     res.removeHeader("X-Powered-by");
     res.status(httpOK);
@@ -77,7 +73,8 @@ app.disable("x-powered-by");
 // SetDB
 const db = new sqlite3.Database(":memory:");
 // Starting the server
-app.listen(80, () => {
+const runPort=80;
+app.listen(runPort, () => {
     console.log("Server started (http://localhost:80/) !");
 });
 
@@ -1022,17 +1019,18 @@ db.serialize(function () {
                 const c19 = row["Taxonomy Mappings"];
                 const c20 = row["Notes"];
 
-                const c6a = "--" + c6.substring(2, c6.length - 2).replaceAll("::", "\n--");
-                const c10a = "--" + c10.substring(2, c10.length - 2).replaceAll("::", "\n--");
-                const c11a = "--" + c11.substring(2, c11.length - 2).replaceAll("::", "\n--");
-                const c12a = "--" + c12.substring(2, c12.length - 2).replaceAll("::", "\n--");
-                const c13a = "--" + c13.substring(2, c13.length - 2).replaceAll("::", "\n--");
-                const c14a = "--" + c14.substring(2, c14.length - 2).replaceAll("::", "\n--");
-                const c15a = "--" + c15.substring(2, c15.length - 2).replaceAll("::", "\n--");
-                const c16a = "--" + c16.substring(2, c16.length - 2).replaceAll("::", "\n--");
-                const c17a = "--" + c17.substring(2, c17.length - 2).replaceAll("::", "\n--");
-                const c19a = "--" + c19.substring(2, c19.length - 2).replaceAll("::", "\n--");
-                const c20a = "--" + c20.substring(2, c20.length - 2).replaceAll("::", "\n--");
+                const trimLen = 2;
+                const c6a = "--" + c6.substring(trimLen, c6.length - trimLen).replaceAll("::", "\n--");
+                const c10a = "--" + c10.substring(trimLen, c10.length - trimLen).replaceAll("::", "\n--");
+                const c11a = "--" + c11.substring(trimLen, c11.length - trimLen).replaceAll("::", "\n--");
+                const c12a = "--" + c12.substring(trimLen, c12.length - trimLen).replaceAll("::", "\n--");
+                const c13a = "--" + c13.substring(trimLen, c13.length - trimLen).replaceAll("::", "\n--");
+                const c14a = "--" + c14.substring(trimLen, c14.length - trimLen).replaceAll("::", "\n--");
+                const c15a = "--" + c15.substring(trimLen, c15.length - trimLen).replaceAll("::", "\n--");
+                const c16a = "--" + c16.substring(trimLen, c16.length - trimLen).replaceAll("::", "\n--");
+                const c17a = "--" + c17.substring(trimLen, c17.length - trimLen).replaceAll("::", "\n--");
+                const c19a = "--" + c19.substring(trimLen, c19.length - trimLen).replaceAll("::", "\n--");
+                const c20a = "--" + c20.substring(trimLen, c20.length - trimLen).replaceAll("::", "\n--");
 
                 sql_insert_capec.run(c1, c2, c3, c4, c5, c6a, c7, c8, c9, c10a, c11a, c12a, c13a, c14a, c15a, c16a, c17a, c18, c19a, c20a);
                 //console.log(row);

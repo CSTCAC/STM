@@ -45,10 +45,10 @@ const securityHeaders = {
 const configA0 = {
     authRequired: false,
     auth0Logout: true,
-    secret: config.get('app.SECRET'),
-    baseURL: config.get('app.BASE_URL'),
-    clientID: config.get('app.CLIENT_ID'),
-    issuerBaseURL: config.get('app.ISSUER_BASE_URL')
+    secret: config.get("app.SECRET"),
+    baseURL: config.get("app.BASE_URL"),
+    clientID: config.get("app.CLIENT_ID"),
+    issuerBaseURL: config.get("app.ISSUER_BASE_URL")
 };
 
 

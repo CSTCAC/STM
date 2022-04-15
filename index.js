@@ -10,16 +10,15 @@ const {auth, requiresAuth} = require("express-openid-connect");
 //-------------------- Configurations ----------------------
 const securityHeaders = {
     "Content-Type": "text/html",
-    "charset":"utf-8",
-    "X-Powered-by": "",
-    "X-Frame-Options": "SAMEORIGIN",
     "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-Powered-by": "",
+    "charset": "utf-8",
+
+
     "X-XSS-Protection": "1; mode=block",
     "Feature-Policy": "autoplay 'none'; camera 'none'",
-    //"Content-Security-Policy": "script-src 'self' 'nonce-GwA54yjx/CUbyVkmfAzhrQ==' 'nonce-j9/wVLIhsF299f3WcoMBHg==' " + "" +
-    //    "'nonce-8SDG4J06kBfDU6JO0DS/nQ==' 'nonce-H0iYXHHgq49xrOQQjSLkIw==' 'nonce-ZWgxGcitiVitzmVZOAI2eg==' https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js;"
-
-    "Content-Security-Policy": "script-src 'self' 'nonce-GwA54yjx/CUbyVkmfAzhrQ==' 'nonce-j9/wVLIhsF299f3WcoMBHg==' 'nonce-8SDG4J06kBfDU6JO0DS/nQ==' 'nonce-H0iYXHHgq49xrOQQjSLkIw==' 'nonce-ZWgxGcitiVitzmVZOAI2eg==' https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js;" +
+   "Content-Security-Policy": "script-src 'self' 'nonce-GwA54yjx/CUbyVkmfAzhrQ==' 'nonce-j9/wVLIhsF299f3WcoMBHg==' 'nonce-8SDG4J06kBfDU6JO0DS/nQ==' 'nonce-H0iYXHHgq49xrOQQjSLkIw==' 'nonce-ZWgxGcitiVitzmVZOAI2eg==' https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js;" +
         "frame-ancestors 'self'; block-all-mixed-content;"+
         "default-src 'self';"+
         "style-src 'self' 'report-sample' 'unsafe-inline'  cdn.jsdelivr.net secure.gravatar.com;"+
@@ -43,12 +42,12 @@ const securityHeaders = {
 };
 
 const configA0 = {
-    authRequired: false,
     auth0Logout: true,
-    secret: config.get("app.SECRET"),
+    authRequired: false,
     baseURL: config.get("app.BASE_URL"),
     clientID: config.get("app.CLIENT_ID"),
-    issuerBaseURL: config.get("app.ISSUER_BASE_URL")
+    issuerBaseURL: config.get("app.ISSUER_BASE_URL"),
+    secret: config.get("app.SECRET")
 };
 
 
@@ -61,12 +60,15 @@ app.use(auth(configA0));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({extended: false})); // <--- middleware configuration
+
+// --- middleware configuration
+app.use(express.urlencoded({extended: false}));
 
 app.use(function (req, res, next) {
+    const httpOK = 200
     res.set(securityHeaders);
     res.removeHeader("X-Powered-by");
-    res.status(200);
+    res.status(httpOK);
     next();
 });
 
@@ -78,7 +80,6 @@ const db = new sqlite3.Database(":memory:");
 app.listen(80, () => {
     console.log("Server started (http://localhost:80/) !");
 });
-
 
 //-------------------- Routing ----------------------
 // GET / -- this is the home page button
@@ -363,7 +364,7 @@ app.get("/threatGraph", requiresAuth(), (req, res) => {
 
 //CONNECTIONS DELETE
 app.get("/deleteConn/:id", requiresAuth(), (req, res) => {
-    const id = [req.params.id,req.oidc.user.email];
+    const id = [req.params.id, req.oidc.user.email];
     const sql = "SELECT * FROM CONNS WHERE CONN_ID = ? and CONN_USER_NAME=?";
     db.get(sql, id, (err, rows) => {
         if (err) {
@@ -1038,7 +1039,7 @@ db.serialize(function () {
                 //                console.log(row.Name)
             })
             .on("end", () => {
-                console.log('CSV file successfully processed');
+                console.log("CSV file successfully processed");
             });
 
         //db.run(sql_insert_capec(row.ID, row.NAME));
